@@ -1,21 +1,19 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, Image,StyleSheet} = React;
+var {View, Text, Image,StyleSheet,TextInput} = React;
 var Button = require('react-native-button');
-var TextFields = require('./textfields');
 import {
   MKTextField,
   MKColor,
   mdl,
 } from 'react-native-material-kit';
-
+import TextField from 'react-native-md-textinput';
 var styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#1A8FC8',
     },
     logo:{
       alignItems:'center',
@@ -33,7 +31,7 @@ var styles = StyleSheet.create({
     }
 });
 
-var  textStyles =StyleSheet.create({
+var  textStyles = StyleSheet.create({
   col: {
     flex: 1,
     flexDirection: 'column',
@@ -47,18 +45,18 @@ var  textStyles =StyleSheet.create({
   },
   textfieldWithFloatingLabel: {
     height: 38,  // have to do it on iOS
-    marginTop: 10,
+    marginTop: 10
   },
 });
 
 const Textfield = MKTextField.textfield()
   .withPlaceholder('Text...')
-  .withStyle(styles.textfield)
+  .withStyle(textStyles.textfield)
   .build();
 
 const TextfieldWithFloatingLabel = MKTextField.textfieldWithFloatingLabel()
   .withPlaceholder('Number...')
-  .withStyle(styles.textfieldWithFloatingLabel)
+  .withStyle(textStyles.textfieldWithFloatingLabel)
   .withFloatingLabelFont({
     fontSize: 10,
     fontStyle: 'italic',
@@ -69,7 +67,7 @@ const TextfieldWithFloatingLabel = MKTextField.textfieldWithFloatingLabel()
 
 const ColoredTextfield = mdl.Textfield.textfield()
   .withPlaceholder('Text...')
-  .withStyle(styles.textfield)
+  .withStyle(textStyles.textfield)
   .withTintColor(MKColor.Lime)
   .withTextInputStyle({color: MKColor.Orange})
   .build();
@@ -78,8 +76,10 @@ const PasswordInput = mdl.Textfield.textfieldWithFloatingLabel()
   .withPassword(true)
   .withPlaceholder('Password')
   .withDefaultValue('!123')
-  .withHighlightColor(MKColor.Lime)
-  .withStyle(styles.textfieldWithFloatingLabel)
+  .withHighlightColor('#ffffff')
+  .withTintColor('#ffffff')
+  .withTextInputStyle({color: '#ffffff'})
+  .withStyle(textStyles.textfieldWithFloatingLabel)
   .withOnFocus(() => console.log('Focus'))
   .withOnBlur(() => console.log('Blur'))
   .withOnEndEditing((e) => console.log('EndEditing', e.nativeEvent.text))
@@ -94,18 +94,12 @@ class Login extends React.Component {
 
         return (
             <View style={styles.container}>
-              <View style={textStyles.row}>
-                <View style={textStyles.col}>
-                  <ColoredTextfield/>
-                  <Text style={textStyles.legendLabel}>Textfield</Text>
-                </View>
-                <View style={textStyles.col}>
-                  <PasswordInput/>
-                  <Text style={textStyles.legendLabel}>With floating label</Text>
-                </View>
-              </View>
+
                 <Image style={styles.logo} source={require('../assets/logo.png')}/>
-                <Button onPress={Actions.pop}>Login</Button>
+                <TextField label={'Email'} labelColor = {'#ffffff'} color={'#ffffff'} highlightColor={'#ffffff'} dense = {true}/>
+                <PasswordInput/>
+                <Button onPress={Actions.pop} containerStyle={{padding:30, height:45, overflow:'hidden', borderRadius:4, borderColor:'#ffffff', backgroundColor: 'white'}}
+                   style={{fontSize: 20, color: '#ffffff'}}>Login</Button>
             </View>
         );
     }
