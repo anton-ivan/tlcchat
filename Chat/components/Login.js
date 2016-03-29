@@ -1,7 +1,7 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, StyleSheet} = React;
+var {View, Text, Image,StyleSheet} = React;
 var Button = require('react-native-button');
 
 class Login extends React.Component {
@@ -10,8 +10,8 @@ class Login extends React.Component {
 
         return (
             <View style={styles.container}>
-                <Text>Login page: {this.props.data}</Text>
-                <Button onPress={Actions.pop}>Back</Button>
+                <Image style={styles.logo} source={require('../assets/logo.png')}/>
+                <Button onPress={Actions.pop}>Login</Button>
             </View>
         );
     }
@@ -21,8 +21,13 @@ var styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#1A8FC8',
+    },
+    logo:{
+      alignItems:'center',
+      top: 0,
     },
     welcome: {
         fontSize: 20,
