@@ -5,10 +5,16 @@ var {AppRegistry, StyleSheet,Text,View} = React;
 var Launch = require('./components/Launch');
 var Register = require('./components/Register');
 var Login = require('./components/Login');
-var {Router, routerReducer, Route, Container, Animations, Schema} = require('react-native-redux-router');
-var {NavBar, NavBarModal} = require('./components/NavBar');
+var NewMessage = require('./components/NewMessage');
+var Messages = require('./components/Messages');
+var Chat = require('./components/Chat');
+var Settings = require('./components/Settings');
+var MessageDetails = require('./components/MessageDetails');
 var Error = require('./components/Error');
 var Home = require('./components/Home');
+
+var {Router, routerReducer, Route, Container, Animations, Schema} = require('react-native-redux-router');
+var {NavBar, NavBarModal} = require('./components/NavBar');
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux/native';
