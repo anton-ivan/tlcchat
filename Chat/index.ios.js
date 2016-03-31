@@ -33,6 +33,10 @@ class App extends React.Component {
 
                     <Route name="launch" component={Launch} initial={true} hideNavBar={true} title="Launch"/>
                     <Route name="register" component={Register} title="Register"/>
+                    <Route name="messages" component={Messages} title="Messages"/>
+                    <Route name="settings" component={Settings} title="Settings"/>
+                    <Route name="newmessage" component={NewMessage} title="NewMessage"/>
+                    <Route name="chat" component={Chat} title="Chat"/>
                     <Route name="home" component={Home} title="Home" type="replace"/>
                     <Route name="login" component={Login} hideNavBar = {true} schema="modal"/>
                     <Route name="register2" component={Register} schema="withoutAnimation"/>

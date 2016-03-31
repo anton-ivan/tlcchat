@@ -10,10 +10,16 @@ class Launch extends React.Component {
         return (
             <View style={styles.container}>
                 <Text>Launch page</Text>
-                <Button onPress={()=>Actions.login({data:"Custom data", title:'Custom title' })}>Go to Login page</Button>
-                <Button onPress={Actions.register}>Go to Register page</Button>
+                <Button onPress={()=>Actions.login({data:"Custom data", title:'Custom title' })}>Login page</Button>
+                <Button onPress={Actions.register}>Register page</Button>
+                <Button onPress={Actions.register}>Chat page</Button>
+                <Button onPress={Actions.register}>Settings page</Button>
+                <Button onPress={Actions.register}>New Chat page</Button>
+                <Button onPress={Actions.register}>Notification page</Button>
+                <Button onPress={Actions.register}>Messages page</Button>
+                <Button onPress={Actions.register}>Details page</Button>
                 <Button onPress={()=>Actions.register2({title: 'Register 2'})}>Go to Register page without animation</Button>
-                <Button onPress={()=>Actions.error("Error message")}>Go to Error page</Button>
+                <Button onPress={()=>Actions.error("Error message")}>Error page</Button>
             </View>
         );
     }
