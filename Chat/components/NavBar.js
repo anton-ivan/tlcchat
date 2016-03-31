@@ -2,7 +2,7 @@
 
 var NavigationBar = require('react-native-navbar');
 var React = require('react-native');
-var {StyleSheet,View} = React;
+var {StyleSheet,View, Image} = React;
 var {Router, Route, Animations, Schema} = require('react-native-redux-router');
 
 class NavBarBase extends React.Component {
@@ -20,10 +20,10 @@ class NavBarBase extends React.Component {
        var Actions = this.props.routes;
        console.log("Props : " + this.props);
        return <NavigationBar style={styles.navBar}
-                             titleColor='white'
+                             titleColor='#ffffff'
                              buttonsColor='white'
                              statusBar= {{style:'light-content', hidden: false}}
-                             title= {{title:this.props.title}}
+                             title= {{title:this.props.title, tintColor:'#ffffff'}}
                              prevTitle={this.props.initial ? " " : null}
                              leftButton = {this.props.leftButton ? this.props.leftButton : {title:''}}
                              rightButton = {this.props.rightButton ? this.props.rightButton : {title:''}}
@@ -33,13 +33,32 @@ class NavBarBase extends React.Component {
            />
    }
 }
+//leftButton={{title:'Left', handler:this.props.onPrev || Actions.pop}}
 class NavBar extends React.Component {
    render() {
      var Actions = this.props.routes;
-       return <NavBarBase customNext={<View/>} {...this.props} leftButton={{title:'Left', handler:this.props.onPrev || Actions.pop}}/>
+       return <NavBarBase customNext={<View/>} {...this.props}
+         leftButton = {<Image style={styles.logo} source={require('../assets/prev.png')}/>}
+         rightButton={{title:'Details', tintColor:'#ffffff', handler:this.props.onPrev || Actions.pop}}/>
+   }
+}
+class NavBarMessage extends React.Component {
+   render() {
+     var Actions = this.props.routes;
+       return <NavBarBase customNext={<View/>} {...this.props}
+         leftButton = {<Image style={styles.logo} source={require('../assets/burger.png')}/>}
+         rightButton = {<Image style={styles.logo} source={require('../assets/edit.png')}/>}
+         />
    }
 }
 
+class NavBarNewMessage extends React.Component {
+   render() {
+     var Actions = this.props.routes;
+       return <NavBarBase customNext={<View/>} {...this.props}
+         rightButton={{title:'Cancel', tintColor:'#ffffff', handler:this.props.onPrev || Actions.pop}}/>
+   }
+}
 
 class NavBarModal extends React.Component {
    render() {
@@ -50,7 +69,7 @@ class NavBarModal extends React.Component {
 
 var styles = StyleSheet.create({
    navBar: {
-       backgroundColor: '#0db0d9'
+       backgroundColor: '#003F58'
    },
 });
 

@@ -14,7 +14,7 @@ var Error = require('./components/Error');
 var Home = require('./components/Home');
 
 var {Router, routerReducer, Route, Container, Animations, Schema} = require('react-native-redux-router');
-var {NavBar, NavBarModal} = require('./components/NavBar');
+var {NavBar, NavBarModal, NavBarMessage, NavBarNewMessage} = require('./components/NavBar');
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux/native';
@@ -34,14 +34,17 @@ class App extends React.Component {
                 <Router>
                     <Schema name="modal" sceneConfig={Animations.FlatFloatFromBottom} navBar={NavBarModal}/>
                     <Schema name="default" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBar}/>
+                    <Schema name="message" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarMessage}/>
+                    <Schema name="newmessage" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarNewMessage}/>
+                    <Schema name="settings" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarMessage}/>
                     <Schema name="withoutAnimation" navBar={NavBar}/>
                     <Schema name="tab" navBar={NavBar}/>
 
                     <Route name="launch" component={Launch} initial={true} hideNavBar={true} title="Launch"/>
                     <Route name="register" component={Register} title="Register"/>
                     <Route name="messages" component={Messages} title="Messages"/>
-                    <Route name="settings" component={Settings} title="Settings"/>
-                    <Route name="newmessage" component={NewMessage} title="NewMessage"/>
+                    <Route name="settings" component={Settings} title="Settings" schema="settings"/>
+                    <Route name="newmessage" component={NewMessage} title="NewMessage" schema="newmessage"/>
                     <Route name="messagedetails" component={MessageDetails} title="MessageDetails"/>
                     <Route name="chat" component={Chat} title="Chat"/>
                     <Route name="home" component={Home} title="Home" type="replace"/>
