@@ -45,9 +45,8 @@ class NavBar extends React.Component {
 class NavBarMessage extends React.Component {
    render() {
      var Actions = this.props.routes;
-       return <NavBarBase customNext={<View/>} {...this.props}
+       return <NavBarBase customNext={<View/>} {...this.props} customPrev={<View/>}
          leftButton = {<Image style={styles.logo} source={require('../assets/burger.png')}/>}
-         rightButton = {<Image style={styles.logo} source={require('../assets/edit.png')}/>}
          />
    }
 }

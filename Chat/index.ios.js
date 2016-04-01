@@ -37,7 +37,7 @@ class App extends React.Component {
                     <Schema name="message" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarMessage}/>
                     <Schema name="newmessage" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarNewMessage}/>
                     <Schema name="settings" sceneConfig={Animations.FlatFloatFromRight} navBar={NavBarMessage}/>
-                    <Schema name="withoutAnimation" navBar={NavBar}/>
+                    <Schema name="withoutAnimation" navBar={NavBarMessage}/>
                     <Schema name="tab" navBar={NavBar}/>
 
                     <Route name="launch" component={Launch} initial={true} hideNavBar={true} title="Launch"/>
@@ -46,9 +46,9 @@ class App extends React.Component {
                     <Route name="settings" component={Settings} title="Settings" schema="settings"/>
                     <Route name="newmessage" component={NewMessage} title="NewMessage" schema="newmessage"/>
                     <Route name="messagedetails" component={MessageDetails} schema="newmessage" title="MessageDetails"/>
-                    <Route name="chat" component={Chat} title="Chat"/>
+                    <Route name="chat" component={Chat} title="Chat" schema="modal"/>
                     <Route name="home" component={Home} title="Home" type="replace"/>
-                    <Route name="login" component={Login} hideNavBar = {true} schema="modal"/>
+                    <Route name="login" component={Login} hideNavBar = {true} schema="message"/>
                     <Route name="register2" component={Register} schema="withoutAnimation"/>
                     <Route name="error" component={Error} schema="popup"/>
                 </Router>
