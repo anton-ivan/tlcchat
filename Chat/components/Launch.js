@@ -11,7 +11,7 @@ class Launch extends React.Component {
             <View style={styles.container}>
                 <Text>Launch page</Text>
                 <Button onPress={()=>Actions.login({data:"Custom data", title:'Login' })}>Login page</Button>
-                <Button onPress={()=>Actions.register({data:"Custom data", title:'Register })}>Register page</Button>
+                <Button onPress={()=>Actions.register({data:"Custom data", title:'Register' })}>Register page</Button>
                 <Button onPress={()=>Actions.chat({data:"Custom data", title:'Chat' })}>Chat page</Button>
                 <Button onPress={()=>Actions.settings({data:"Custom data", title:'Settings' })}>Settings page</Button>
                 <Button onPress={()=>Actions.newmessage({data:"Custom data", title:'New Chat' })}>New Chat page</Button>

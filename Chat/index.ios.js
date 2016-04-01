@@ -45,7 +45,7 @@ class App extends React.Component {
                     <Route name="messages" component={Messages} title="Messages"/>
                     <Route name="settings" component={Settings} title="Settings" schema="settings"/>
                     <Route name="newmessage" component={NewMessage} title="NewMessage" schema="newmessage"/>
-                    <Route name="messagedetails" component={MessageDetails} schema="newmessage" title="MessageDetails"/>
+                    <Route name="messagedetails" component={MessageDetails} schema="newmessage" hideNavBar={false} title="MessageDetails"/>
                     <Route name="chat" component={Chat} title="Chat" schema="modal"/>
                     <Route name="home" component={Home} title="Home" type="replace"/>
                     <Route name="login" component={Login} hideNavBar = {true} schema="message"/>
