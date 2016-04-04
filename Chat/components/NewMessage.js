@@ -1,53 +1,64 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, StyleSheet, TextInput} = React;
-var {NavBarMessage} = require('./NavBar');
-var Button = require('react-native-button');
-var { KeyboardAwareScrollView }=require('react-native-keyboard-aware-scroll-view');
+var {
+   AppRegistry,
+   StyleSheet,
+   Text,
+   TextInput,
+   View
+ } = React;
 
-class NewMessage extends React.Component {
-    _scrollToInput (event, reactNode) {
-      // Add a 'scroll' ref to your ScrollView
-      this.refs.scroll.scrollToFocusedInput(event, reactNode)
-    }
-    render(){
-        let Actions = this.props.routes;
-        return (
-            <KeyboardAwareScrollView  ref='scroll'>
+ var {KeyBoardResizeView} = require('react-native-sk-keyboard-responder');
 
-                <View >
+ var NewMessage  = React.createClass({
+     getList: function(){
+       var list = [];
+       for (var i = 0; i < 20; i++) {
+         list.push(<Text key={i} style={styles.item}>{'Sample' + i}</Text>)
+       }
+       return list;
+     },
+     render: function(){
+     return (
+       <View style={styles.container}>
+        {this.getList()}
+        <KeyBoardResizeView style={styles.inputBox}>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor='#AFAFAF'
+            placeholder='Placeholder'
+            />
+        </KeyBoardResizeView>
+       </View>
+     )
+   },
+ });
 
-                 <TextInput ref='myInput' onFocus={this._scrollToInput}/>
-               </View>
-            </KeyboardAwareScrollView>
-        );
-    }
-}
 
-var styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#005A7D',
+     //  flex: 1,
+      backgroundColor: 'grey',
     },
-    item:{
-      height: 60,
-      backgroundColor:'#005B7D',
-      borderBottomWidth:1.5,
-      borderColor:'#004058',
-      paddingLeft:20,
-      paddingRight:20
+    listBox: {
+      flex: 1,
+      justifyContent: 'space-around',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+    item: {
+      fontSize: 17,
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
+    inputBox: {
+      height: 50,
+      margin: 5,
+      borderWidth:1,
+      borderColor:'#E1E1E1',
+      borderRadius: 5,
+      backgroundColor:'#FFF',
     },
-});
-
+    input: {
+     flex: 1,
+     fontSize:14,
+    }
+  });
 module.exports = NewMessage;
