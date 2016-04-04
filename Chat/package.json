@@ -10,6 +10,7 @@
     "react-native": "0.17.0",
     "react-native-button": "~1.2.1",
     "react-native-floating-label-text-input": "0.0.8",
+    "react-native-gifted-messenger": "0.0.24",
     "react-native-material-kit": "^0.3.0",
     "react-native-navbar": "~1.1.6",
     "react-native-redux-router": "^1.0.0",
