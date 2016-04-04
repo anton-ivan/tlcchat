@@ -76,43 +76,44 @@ var Chat = React.createClass({
     return (
       <GiftedMessenger
         ref={(c) => this._GiftedMessenger = c}
-
         messages={this.getMessages()}
         handleSend={this.handleSend}
         maxHeight={Dimensions.get('window').height - 64} // 64 for the navBar
-
-        styles={{
-          bubbleLeft: {
-            backgroundColor: '#e6e6eb',
-            marginRight: 70,
-          },
-          bubbleRight: {
-            backgroundColor: '#007aff',
-            marginLeft: 70,
-          },
-        }}
+        styles={styles}
       />
     );
   },
 });
 
 var styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+  container: {
+    backgroundColor: '#005A7D',
+    flex:1,
+  },
+  bubbleLeft: {
+    backgroundColor: '#114E6B',
+    marginRight: 70
+  },
+  bubbleRight: {
+    backgroundColor: '#DBF2FD',
+    marginLeft: 70
+  },
+  textLeft: {
+    color: '#fff',
+  },
+  textRight: {
+    color: '#004F6B',
+  },
+  link:{
+    color: '#ffffff'
+  },
+  date: {
+    color: '#ffffff',
+    fontSize: 12,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
 });
 
 module.exports = Chat;

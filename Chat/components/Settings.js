@@ -1,9 +1,18 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, StyleSheet, TouchableHighlight} = React;
+//var {View, Text, StyleSheet, TouchableHighlight} = React;
+var {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Alert
+} =  React;
 var Button = require('react-native-button');
-var SortableListView = require('react-native-sortable-listview');
+var SettingsList = require('react-native-settings-list');
 var menu = {
   hello: {
     sender: 'Bryon McCane',
@@ -12,53 +21,107 @@ var menu = {
   },
 };
 
-var order = Object.keys(menu); //Array of keys
-
-var RowComponent = React.createClass({
-  render: function() {
-    return <TouchableHighlight underlayColor={'#eee'} style={{padding: 25, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#eee'}} onLongPress={this.props.onLongPress}>
-          <View style={{color:'#ffffff'}}>
-            <Text style={{color:'#ffffff', fontSize:13}}>{this.props.data.text}</Text>
-          </View>
-      </TouchableHighlight>
-  }
-})
-
 class Settings extends React.Component {
-    render(){
-        let Actions = this.props.routes;
-        return (
-              <SortableListView
-                style={{flex: 1, color:'#ffffff', backgroundColor:'#005B7D'}}
-                data={menu}
-                order={order}
-                onRowMoved={e => {
-                  order.splice(e.to, 0, order.splice(e.from, 1)[0]);
-                  this.forceUpdate();
-                }}
-                renderRow={row => <RowComponent data={row} />}
-              />
-        );
-    }
+
+  constructor()
+  {
+    super();
+    this.onValueChange = this.onValueChange.bind(this);
+    this.state = {switchValue: false};
+
+  }
+  render() {
+    let Actions = this.props.routes;
+    return (
+      <View style={styles.container}>
+        <View style={styles.navbar}>
+          <Image style={{width: 32, height:32,marginTop:15, alignSelf:'center', marginRight:15, marginLeft:15, marginBottom:5}} source={require('../assets/burger.png')}/>
+          <View style={{flex:1}}>
+              <Text style={styles.navbartext}>Settings</Text>
+          </View>
+
+        </View>
+        <View style={{backgroundColor:'#EFEFF4',flex:1}}>
+          <Image style={{alignSelf:'center' ,marginTop:50, marginBottom:50}} source={require('../assets/full-logo.png')}/>
+          <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+            <SettingsList.Header headerStyle={{marginTop:15}}/>
+            <SettingsList.Item
+              hasSwitch={true}
+              switchState={this.state.switchValue}
+              switchOnValueChange={this.onValueChange}
+              hasNavArrow={false}
+              title='Notifications'
+              titleStyle={{fontSize:16}}
+            />
+            <SettingsList.Item
+              icon={<Image style={styles.imageStyle} source={require('../assets/wifi.png')}/>}
+              title='Wi-Fi'
+              titleStyle={{fontSize:16}}
+              titleInfo='Bill Wi The Science Fi'
+              titleInfoStyle={styles.titleInfoStyle}
+              onPress={() => Alert.alert('Route to Wifi Page')}
+            />
+            <SettingsList.Item
+              icon={<Image style={styles.imageStyle} source={require('../assets/blutooth.png')}/>}
+              title='Blutooth'
+              titleStyle={{fontSize:16}}
+              titleInfo='Off'
+              titleInfoStyle={styles.titleInfoStyle}
+              onPress={() => Alert.alert('Route to Blutooth Page')}
+            />
+            <SettingsList.Item
+              icon={<Image style={styles.imageStyle} source={require('../assets/cellular.png')}/>}
+              title='Cellular'
+              titleStyle={{fontSize:16}}
+              onPress={() => Alert.alert('Route To Cellular Page')}
+            />
+            <SettingsList.Item
+              title='Log Out'
+              titleStyle={{fontSize:16, color: '#ff0000'}}
+              titleInfoStyle={styles.titleInfoStyle}
+              onPress={() => Actions.pop()}
+            />
+            </SettingsList>
+        </View>
+      </View>
+    );
+  }
+  onValueChange(value){
+    this.setState({switchValue: value});
+  }
 }
 
-var styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#005B7D',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor:'#F3F3F4',
+    flex:1
+  },
+  navbar:{
+    borderBottomWidth:1,
+    backgroundColor:'#003F58',
+    borderColor:'#c8c7cc',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  navbartext:{
+    alignSelf:'center',
+    marginTop:30,
+    marginBottom:10,
+    fontWeight:'bold',
+    fontSize:16,
+    color: '#ffffff'
+  },
+  imageStyle:{
+    marginLeft:15,
+    alignSelf:'center',
+    height:30,
+    width:30
+  },
+  titleInfoStyle:{
+    fontSize:16,
+    color: '#8e8e93'
+  }
 });
 
 module.exports = Settings;
