@@ -2,7 +2,8 @@
 
 var React = require('react-native');
 var {View, Text, Image,StyleSheet,TextInput} = React;
-var Button = require('react-native-button');
+//var Button = require('react-native-button');
+var Button = require('apsl-react-native-button');
 import {
   MKTextField,
   MKColor,
@@ -94,19 +95,26 @@ class Login extends React.Component {
 
         return (
             <View style={styles.container}>
-
-                <Image style={styles.logo} source={require('../assets/logo.png')}/>
-                <TextField label={'Email'} labelColor = {'#ffffff'} color={'#ffffff'} highlightColor={'#ffffff'} dense = {true}/>
-                <PasswordInput/>
-                <Button onPress={Actions.pop} containerStyle={{padding:30, height:45, overflow:'hidden', borderRadius:4, borderColor:'#ffffff', backgroundColor: 'white'}}
-                   style={{fontSize: 20, color: '#ffffff'}}>Login</Button>
+                <View style={{marginBottom:20, paddingLeft:30, paddingRight:30, alignItems:'center'}}>
+                  <Image style={styles.logo} source={require('../assets/logo.png')}/>
+                </View>
+                <View style={{marginBottom:20, paddingLeft:30, paddingRight:30}}>
+                    <TextField label={'Email'} labelColor = {'#ffffff'} color={'#ffffff'} highlightColor={'#ffffff'} dense = {true}/>
+                </View>
+                <View style={{marginBottom:20, paddingLeft:30, paddingRight:30}}>
+                    <PasswordInput/>
+                </View>
+                <View style={{paddingLeft:30, paddingRight:30, marginTop:20}}>
+                  <Button
+                    onPress={Actions.pop}
+                    textStyle={{color:'#ffffff'}}
+                    style={{borderColor:'#3795C2', borderRadius:10}}>
+                     Login
+                   </Button>
+                </View>
             </View>
         );
     }
 }
-
-
-
-
 
 module.exports = Login;

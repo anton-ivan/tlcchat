@@ -27,9 +27,6 @@ class NavBarBase extends React.Component {
                              prevTitle={this.props.initial ? " " : null}
                              leftButton = {this.props.leftButton ? this.props.leftButton : {title:''}}
                              rightButton = {this.props.rightButton ? this.props.rightButton : {title:''}}
-
-
-
            />
    }
 }
@@ -38,7 +35,7 @@ class NavBar extends React.Component {
    render() {
      var Actions = this.props.routes;
        return <NavBarBase customNext={<View/>} {...this.props}
-         leftButton = {<Image style={styles.logo} source={require('../assets/prev.png')}/>}
+         leftButton = {<View><Image style={styles.logo} source={require('../assets/prev.png')}/></View>}
          rightButton={{title:'Details', tintColor:'#ffffff', handler:this.props.onPrev || Actions.pop}}/>
    }
 }
@@ -68,8 +65,13 @@ class NavBarModal extends React.Component {
 
 var styles = StyleSheet.create({
    navBar: {
-       backgroundColor: '#003F58'
+       backgroundColor: '#003F58',
+       marginBottom:0,
+       height:48
    },
+   logo: {
+     marginTop:0
+   }
 });
 
 
