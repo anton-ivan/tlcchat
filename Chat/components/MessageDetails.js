@@ -34,26 +34,20 @@ class MessageDetails extends React.Component {
       return (
         <View style={styles.container}>
           <View style={styles.navbar}>
-            <Image style={{width: 32, height:32,marginTop:15, alignSelf:'center', marginRight:15, marginLeft:15, marginBottom:5}} source={require('../assets/prev.png')}/>
+            <Image style={{width: 32, height:32,marginTop:15, alignSelf:'center', marginRight:15, marginLeft:15, marginBottom:5, borderBottomWidth:0}} source={require('../assets/prev.png')}/>
             <View style={{flex:1}}>
                 <Text style={styles.navbartext}>Details</Text>
             </View>
 
           </View>
-          <View style={{backgroundColor:'#005B7D',flex:1}}>
+          <View style={{backgroundColor:'#005A7D',flex:1}}>
             <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
-              <SettingsList.Header headerStyle={{marginTop:15}}/>
               <SettingsList.Item
                 hasNavArrow={false}
                 title='Archive Message'
-                titleStyle={{fontSize:16, color:'#ffffff', marginLeft:-15}}
+                titleStyle={{fontSize:16, color:'#ffffff'}}
                 backgroundColor ='#005B7D'
-              />
-              <SettingsList.Item
-                hasNavArrow={false}
-                title='Other Mesage Function'
-                titleStyle={{fontSize:16, color:'#ffffff', marginLeft:-15}}
-                backgroundColor ='#005B7D'
+                onPress={() => Actions.pop()}
               />
               </SettingsList>
           </View>
