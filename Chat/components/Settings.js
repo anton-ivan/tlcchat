@@ -1,29 +1,43 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, Image, StyleSheet} = React;
+var {View, Text, StyleSheet, TouchableHighlight} = React;
 var Button = require('react-native-button');
-var Switch = require('react-native-material-switch');
+var SortableListView = require('react-native-sortable-listview');
+var menu = {
+  hello: {
+    sender: 'Bryon McCane',
+    text: 'Archive Conversation',
+    duration: '1d'
+  },
+};
+
+var order = Object.keys(menu); //Array of keys
+
+var RowComponent = React.createClass({
+  render: function() {
+    return <TouchableHighlight underlayColor={'#eee'} style={{padding: 25, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#eee'}} onLongPress={this.props.onLongPress}>
+          <View style={{color:'#ffffff'}}>
+            <Text style={{color:'#ffffff', fontSize:13}}>{this.props.data.text}</Text>
+          </View>
+      </TouchableHighlight>
+  }
+})
 
 class Settings extends React.Component {
     render(){
         let Actions = this.props.routes;
         return (
-            <View style={styles.container}>
-                <View>
-                    <Image style={styles.logo} source={require('../assets/full-logo.png')}/>
-                </View>
-                <View style={styles.listItem}>
-                    <Text>Notification</Text>
-                    <Switch onChangeState={(state)=>{alert(state)}}/>
-                </View>
-                <View style={styles.listItem}>
-                    <Button>Logout</Button>
-                </View>
-                <Button onPress={Actions.home}>Home</Button>
-                <Button onPress={Actions.pop}>Back</Button>
-
-            </View>
+              <SortableListView
+                style={{flex: 1, color:'#ffffff', backgroundColor:'#005B7D'}}
+                data={menu}
+                order={order}
+                onRowMoved={e => {
+                  order.splice(e.to, 0, order.splice(e.from, 1)[0]);
+                  this.forceUpdate();
+                }}
+                renderRow={row => <RowComponent data={row} />}
+              />
         );
     }
 }
@@ -33,15 +47,7 @@ var styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F3F3F4',
-    },
-    listItem:{
-      borderColor: '#eeeeee',
-      borderBottomWidth: 3
-    },
-    logo:{
-      alignItems:'center',
-      top: 0,
+        backgroundColor: '#005B7D',
     },
     welcome: {
         fontSize: 20,
