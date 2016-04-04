@@ -52,7 +52,7 @@ var order = Object.keys(messages); //Array of keys
 var RowComponent = React.createClass({
   render: function() {
     return <TouchableHighlight underlayColor={'#eee'} style={{padding: 25, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#eee'}} onLongPress={this.props.onLongPress}>
-          <View style={{color:'#ffffff'}}>
+          <View>
             <View>
               <Text style={{color:'#ffffff', flexDirection:'row', flex:3}}>{this.props.data.sender}</Text>
               <Text style={{color:'#ffffff', flexDirection:'row',flexWrap:'wrap', flex:1}}>{this.props.data.duration}</Text>
@@ -68,7 +68,7 @@ class Messages extends React.Component {
         let Actions = this.props.routes;
         return (
               <SortableListView
-                style={{flex: 1, color:'#ffffff', backgroundColor:'#005B7D'}}
+                style={{flex: 1,backgroundColor:'#005B7D'}}
                 data={messages}
                 order={order}
                 onRowMoved={e => {
