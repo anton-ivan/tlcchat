@@ -1,9 +1,17 @@
 'use strict';
 
 var React = require('react-native');
-var {View, Text, StyleSheet, TouchableHighlight} = React;
+var {
+  AppRegistry,
+  Component,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Alert
+} =  React;
 var Button = require('react-native-button');
-var SortableListView = require('react-native-sortable-listview');
+var SettingsList = require('react-native-settings-list');
 var menu = {
   hello: {
     sender: 'Bryon McCane',
@@ -12,53 +20,81 @@ var menu = {
   },
 };
 
-var order = Object.keys(menu); //Array of keys
-
-var RowComponent = React.createClass({
-  render: function() {
-    return <TouchableHighlight underlayColor={'#eee'} style={{padding: 25, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#eee'}} onLongPress={this.props.onLongPress}>
-          <View style={{color:'#ffffff'}}>
-            <Text style={{color:'#ffffff', fontSize:13}}>{this.props.data.text}</Text>
-          </View>
-      </TouchableHighlight>
-  }
-})
 
 class MessageDetails extends React.Component {
-    render(){
-        let Actions = this.props.routes;
-        return (
-              <SortableListView
-                style={{flex: 1, color:'#ffffff', backgroundColor:'#005B7D'}}
-                data={menu}
-                order={order}
-                onRowMoved={e => {
-                  order.splice(e.to, 0, order.splice(e.from, 1)[0]);
-                  this.forceUpdate();
-                }}
-                renderRow={row => <RowComponent data={row} />}
+    constructor()
+    {
+      super();
+      this.onValueChange = this.onValueChange.bind(this);
+      this.state = {switchValue: false};
+
+    }
+    render() {
+      let Actions = this.props.routes;
+      return (
+        <View style={styles.container}>
+          <View style={styles.navbar}>
+            <Image style={{width: 32, height:32,marginTop:15, alignSelf:'center', marginRight:15, marginLeft:15, marginBottom:5}} source={require('../assets/prev.png')}/>
+            <View style={{flex:1}}>
+                <Text style={styles.navbartext}>Details</Text>
+            </View>
+
+          </View>
+          <View style={{backgroundColor:'#005B7D',flex:1}}>
+            <SettingsList borderColor='#c8c7cc' defaultItemSize={50}>
+              <SettingsList.Header headerStyle={{marginTop:15}}/>
+              <SettingsList.Item
+                hasNavArrow={false}
+                title='Archive Message'
+                titleStyle={{fontSize:16, color:'#ffffff', marginLeft:-15}}
+                backgroundColor ='#005B7D'
               />
-        );
+              <SettingsList.Item
+                hasNavArrow={false}
+                title='Other Mesage Function'
+                titleStyle={{fontSize:16, color:'#ffffff', marginLeft:-15}}
+                backgroundColor ='#005B7D'
+              />
+              </SettingsList>
+          </View>
+        </View>
+      );
+    }
+    onValueChange(value){
+      this.setState({switchValue: value});
     }
 }
 
-var styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#005B7D',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor:'#F3F3F4',
+    flex:1
+  },
+  navbar:{
+    borderBottomWidth:1,
+    backgroundColor:'#003F58',
+    borderColor:'#c8c7cc',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  navbartext:{
+    alignSelf:'center',
+    marginTop:30,
+    marginBottom:10,
+    fontWeight:'bold',
+    fontSize:16,
+    color: '#ffffff'
+  },
+  imageStyle:{
+    marginLeft:15,
+    alignSelf:'center',
+    height:30,
+    width:30
+  },
+  titleInfoStyle:{
+    fontSize:16,
+    color: '#8e8e93'
+  }
 });
-
 module.exports = MessageDetails;
