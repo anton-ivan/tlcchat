@@ -46,7 +46,7 @@ class NavBarMessage extends React.Component {
    render() {
      var Actions = this.props.routes;
        return <NavBarBase customNext={<View/>} {...this.props} customPrev={<View/>}
-         leftButton = {<Image style={styles.logo} source={require('../assets/burger.png')}/>}
+         leftButton = {<Image style={styles.logo} source={require('../assets/prev.png')}/>}
          />
    }
 }

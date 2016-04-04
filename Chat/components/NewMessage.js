@@ -2,6 +2,7 @@
 
 var React = require('react-native');
 var {View, Text, StyleSheet} = React;
+var {NavBarMessage} = require('./NavBar');
 var Button = require('react-native-button');
 
 class NewMessage extends React.Component {
@@ -9,6 +10,7 @@ class NewMessage extends React.Component {
         let Actions = this.props.routes;
         return (
             <View style={styles.container}>
+                
                 <Text>Register page</Text>
                 <Button onPress={Actions.home}>Home</Button>
                 <Button onPress={Actions.pop}>Back</Button>
