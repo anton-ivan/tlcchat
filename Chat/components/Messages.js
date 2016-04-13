@@ -7,57 +7,77 @@ var SortableListView = require('react-native-sortable-listview');
 var messages = {
   hello: {
     sender: 'Bryon McCane',
-    text: 'world',
-    duration: '1d'
+    text: 'Hello from the other side \nI must have called a thousand times',
+    duration: '1h'
   },
   how: {
     sender: 'Charles Scruggs',
-    text: 'are you',
+    text: 'Hello from the other side \nI must have called a thousand times',
     duration: '3d'
   },
   test: {
     sender: 'Steven Howse',
-    text: 'Meet me!',
-    duration: '1d'
+    text: 'Hello from the other side \nI must have called a thousand times',
+    duration: '2h'
   },
   this: {
     sender: 'Welcome Group',
-    text: 'is',
-    duration: 'd'
+    text: 'Hello from the other side \nI must have called a thousand times',
+    duration: '1d'
   },
   a: {
     sender: 'Deacons',
-    text: 'a',
-    duration: '2d'
+    text: 'Hello from the other side \nI must have called a thousand times',
+    duration: '3d'
   },
   real: {
     sender: 'Cristiano Ronaldo',
     text: 'madridsta everything!',
     duration: '1d'
-  },
-  drag: {
-    sender: 'Didier Drogba',
-    text: 'drag and drop',
-    duration: '2d'
-  },
-  bb: {
-    sender: 'Gareth Bale',
-    text: 'Mammamia!',
-    duration: '3d'
   }
 };
+var styles = StyleSheet.create({
+    messageContainer:{
+        paddingTop:10,
+        paddingBottom:10,
+        paddingLeft:30,
+        paddingRight:30
+    },
+    messageTitle:{
+        color:'#fff',
+        fontSize:16,
+        color: '#ffffff',
+        fontWeight:'bold',
+        textAlign:'left'
+    },
+    messageDuration:{
+        color:'#fff',
+        fontSize:12,
+        color: '#ffffff',
+        textAlign:'right',
+        flex:1                //Step 3
+    },
+    messageText:{
+        color:'#fff',
+        textAlign:'left',
+        fontSize:12,
+        color: '#ffffff'
+    }
+});
 
 var order = Object.keys(messages); //Array of keys
 
 var RowComponent = React.createClass({
   render: function() {
-    return <TouchableHighlight underlayColor={'#eee'} style={{padding: 25, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#eee'}} onLongPress={this.props.onLongPress}>
-          <View>
-            <View>
-              <Text style={{color:'#ffffff', flexDirection:'row', flex:3}}>{this.props.data.sender}</Text>
-              <Text style={{color:'#ffffff', flexDirection:'row',flexWrap:'wrap', flex:1}}>{this.props.data.duration}</Text>
+    return <TouchableHighlight underlayColor={'#eee'} style={{flex:1, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#004058'}} onLongPress={this.props.onLongPress}>
+          <View style={styles.messageContainer}>
+            <View style={{flexDirection:'row'}}>
+                <Text style={styles.messageTitle}>{this.props.data.sender}</Text>
+                <Text style={styles.messageDuration}>{this.props.data.duration}</Text>
             </View>
-            <Text style={{color:'#ffffff'}}>{this.props.data.text}</Text>
+            <View style={{flexDirection:'row', paddingTop:5}}>
+                <Text style={styles.messageText}>{this.props.data.text}</Text>
+            </View>
           </View>
       </TouchableHighlight>
   }
@@ -80,24 +100,5 @@ class Messages extends React.Component {
         );
     }
 }
-
-var styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#005B7D',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});
 
 module.exports = Messages;
