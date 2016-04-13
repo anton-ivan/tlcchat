@@ -54,28 +54,6 @@ class Settings extends React.Component {
               titleStyle={{fontSize:16}}
             />
             <SettingsList.Item
-              icon={<Image style={styles.imageStyle} source={require('../assets/wifi.png')}/>}
-              title='Wi-Fi'
-              titleStyle={{fontSize:16}}
-              titleInfo='Bill Wi The Science Fi'
-              titleInfoStyle={styles.titleInfoStyle}
-              onPress={() => Alert.alert('Route to Wifi Page')}
-            />
-            <SettingsList.Item
-              icon={<Image style={styles.imageStyle} source={require('../assets/blutooth.png')}/>}
-              title='Blutooth'
-              titleStyle={{fontSize:16}}
-              titleInfo='Off'
-              titleInfoStyle={styles.titleInfoStyle}
-              onPress={() => Alert.alert('Route to Blutooth Page')}
-            />
-            <SettingsList.Item
-              icon={<Image style={styles.imageStyle} source={require('../assets/cellular.png')}/>}
-              title='Cellular'
-              titleStyle={{fontSize:16}}
-              onPress={() => Alert.alert('Route To Cellular Page')}
-            />
-            <SettingsList.Item
               title='Log Out'
               titleStyle={{fontSize:16, color: '#ff0000'}}
               titleInfoStyle={styles.titleInfoStyle}

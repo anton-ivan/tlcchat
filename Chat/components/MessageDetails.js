@@ -61,7 +61,7 @@ class MessageDetails extends React.Component {
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:'#F3F3F4',
+    backgroundColor:'#005879',
     flex:1
   },
   navbar:{

@@ -16,8 +16,6 @@ class Launch extends React.Component {
                 <Button onPress={()=>Actions.newmessage({data:"Custom data", title:'New Chat' })}>New Chat page</Button>
                 <Button onPress={()=>Actions.messages({data:"Custom data", title:'Inbox/Outbox' })}>Messages page</Button>
                 <Button onPress={()=>Actions.messagedetails({data:"Custom data", title:'Details Page' })}>Details page</Button>
-                <Button onPress={()=>Actions.register2({title: 'Register 2'})}>Without animation</Button>
-                <Button onPress={()=>Actions.error("Error message")}>Modal/Error page</Button>
             </View>
         );
     }

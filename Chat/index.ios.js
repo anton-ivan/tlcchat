@@ -49,8 +49,6 @@ class App extends React.Component {
                     <Route name="chat" component={Chat} title="Chat" schema="modal"/>
                     <Route name="home" component={Home} title="Home" type="replace"/>
                     <Route name="login" component={Login} hideNavBar = {true} schema="message"/>
-                    <Route name="register2" component={Register} schema="withoutAnimation"/>
-                    <Route name="error" component={Error} schema="popup"/>
                 </Router>
 
             </View>
