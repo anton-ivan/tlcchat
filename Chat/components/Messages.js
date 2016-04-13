@@ -38,10 +38,20 @@ var messages = {
 };
 var styles = StyleSheet.create({
     messageContainer:{
-        paddingTop:10,
-        paddingBottom:10,
-        paddingLeft:30,
-        paddingRight:30
+        paddingLeft:0,
+        paddingRight:30,
+        flexDirection:'row'
+    },
+    readStatus:{
+       flex:0.03,
+       backgroundColor:'#1A8FC8',
+       borderColor:'#ff0000'
+    },
+    messageContent:{
+      paddingTop:10,
+      paddingBottom:10,
+      paddingLeft:20,
+      flex:1
     },
     messageTitle:{
         color:'#fff',
@@ -71,13 +81,18 @@ var RowComponent = React.createClass({
   render: function() {
     return <TouchableHighlight underlayColor={'#eee'} style={{flex:1, backgroundColor: "#005B7D", borderBottomWidth:2, borderColor: '#004058'}} onLongPress={this.props.onLongPress}>
           <View style={styles.messageContainer}>
-            <View style={{flexDirection:'row'}}>
-                <Text style={styles.messageTitle}>{this.props.data.sender}</Text>
-                <Text style={styles.messageDuration}>{this.props.data.duration}</Text>
+            <View style={styles.readStatus}>
             </View>
-            <View style={{flexDirection:'row', paddingTop:5}}>
-                <Text style={styles.messageText}>{this.props.data.text}</Text>
+            <View style={styles.messageContent}>
+              <View style={{flexDirection:'row'}}>
+                  <Text style={styles.messageTitle}>{this.props.data.sender}</Text>
+                  <Text style={styles.messageDuration}>{this.props.data.duration}</Text>
+              </View>
+              <View style={{flexDirection:'row', paddingTop:5}}>
+                  <Text style={styles.messageText}>{this.props.data.text}</Text>
+              </View>
             </View>
+
           </View>
       </TouchableHighlight>
   }
