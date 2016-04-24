@@ -9,6 +9,8 @@ var {
   ScrollView,
   TextInput,
 } = React;
+var AutoExpandingTextInput = require('react-native-auto-expanding-textinput');
+
 var styles= StyleSheet.create({
   container: {
     flex: 1,
@@ -87,7 +89,14 @@ class NewMessage extends React.Component{
               returnKeyType='next'
               onFocus={this.inputFocused.bind(this,'firstname')}></TextInput>
           </View>
-
+          <AutoExpandingTextInput
+            placeholder="height increases with content"
+            enablesReturnKeyAutomatically={true}
+            returnKeyType="done"
+            minHeight={40}
+            maxHeight={44}
+            onChangeHeight={this._onChangeHeight}
+          />
 
           <View style={styles.message}>
             <Text style={styles.msgheader}>Is there a text input above?</Text>
